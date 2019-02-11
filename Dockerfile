@@ -3,7 +3,8 @@ FROM pytorch/pytorch:1.0-cuda10.0-cudnn7-devel
 WORKDIR /workspace/
 
 # install basics
-RUN apt-get update -y
+#RUN apt-get update -y
+RUN apt-get update
 RUN apt-get install -y git curl ca-certificates bzip2 cmake tree htop bmon iotop sox libsox-dev libsox-fmt-all vim
 
 # install python deps
@@ -37,4 +38,4 @@ RUN cd deepspeech.pytorch; pip install -i https://pypi.tuna.tsinghua.edu.cn/simp
 # launch jupiter
 RUN pip install -i https://pypi.tuna.tsinghua.edu.cn/simple jupyter
 RUN mkdir data; mkdir notebooks;
-CMD jupyter-notebook --ip="*" --no-browser --allow-root
+CMD jupyter-notebook --ip="0.0.0.0" --no-browser --allow-root
